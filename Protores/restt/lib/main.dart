@@ -67,7 +67,7 @@ class ScreenHome extends StatelessWidget  {
             icon: Icon(Icons.password),
             labelText: "Enter pin",
           ),),
-          ElevatedButton(onPressed: (){print(getResult("http://127.0.0.1:5000/RestApi?query=0124"));}, child: const Text("Verify")) // chance of error
+          ElevatedButton(onPressed: ()async {print(await getResult("http://127.0.0.1:5000/RestApi?query=0124"));}, child: const Text("Verify")) // chance of error
         ],
       ),
     
