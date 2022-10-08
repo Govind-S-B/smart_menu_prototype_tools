@@ -1,13 +1,21 @@
-from flask import Flask, request, jsonify
+# from flask import Flask, request, jsonify
+import flask
 Password = "00234"
-App = Flask(__name__)
-@App.route("/RestApi")
+App = flask.Flask(__name__)
+
+@App.route("/RestApi", methods=['GET'])
 def Check():
-    inp = request.args["query"]
+    inp = flask.request.args["query"]
+
     if inp == str(Password):
-        return "1"
+        val = 1
     else:
-        return "0"
+        val = 0
+
+    response = flask.jsonify({'PIN_auth': str(val)})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.mimetype = "application/json"
+    return response
         
 if __name__ == '__main__':
   App.run(host='0.0.0.0', port=5000)
