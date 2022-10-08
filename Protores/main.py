@@ -8,4 +8,6 @@ def Check():
         return "1"
     else:
         return "0"
-App.run()
+        
+if __name__ == '__main__':
+  App.run(host='0.0.0.0', port=5000)
