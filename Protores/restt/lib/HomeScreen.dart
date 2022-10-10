@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restt/ValueScreen.dart';
 import 'package:restt/functions.dart';
 class ScreenHome extends StatefulWidget   {
   ScreenHome({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _ScreenHomeState extends State<ScreenHome> {
         children: [
           TextFormField(
             onChanged: (value) {
-              url = "http://66.42.42.229:5000/RestApi?query="+value.toString();
+              url = "http://127.0.0.1:5000//RestApi?query="+value.toString()+"&id="+tableId;
             },
             decoration: const InputDecoration(
             icon: Icon(Icons.password),
