@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.first_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 2rem;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.submit_btn {
+  background-color: rgb(0, 174, 255);
+  color: white;
+  padding: 0.75rem 1.95rem;
+  margin-top: 2rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.tagline {
+  margin-top: 1rem;
+  font-family: "Trebuchet MS";
+  line-height: 1.5rem;
+}
+
+.header {
+  font-size: 2.75rem;
+  font-weight: 500;
+  color: rgb(0, 174, 255);
+  font-family: "Gill Sans", sans-serif;
+}
+
+@media screen and (min-width: 992px) {
+  .tagline {
+    width: 50%;
+    font-size: 1.1rem;
+  }
+}
