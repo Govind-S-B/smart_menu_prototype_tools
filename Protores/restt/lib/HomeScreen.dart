@@ -21,7 +21,7 @@ class _ScreenHomeState extends State<ScreenHome> {
         children: [
           TextFormField(
             onChanged: (value) {
-              url = "http://127.0.0.1:5000//RestApi?query="+value.toString()+"&id="+tableId;
+              url = "http://66.42.42.229:5000//RestApi?query="+value.toString()+"&id="+tableId;
             },
             decoration: const InputDecoration(
             icon: Icon(Icons.password),
