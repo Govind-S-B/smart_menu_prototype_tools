@@ -17,5 +17,5 @@ jobs:
         port: 22
         script: |
           cd ~
-          mkdir bleh
+          mkdir bleho
 
