@@ -1,14 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+
 String tableId = "";
+
+void main() {
+  runApp(const ScreenValue());
+}
+
 class ScreenValue extends StatelessWidget {
   const ScreenValue({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'flutter',
+      home: MyHomePage(),
+    );
+  }
+}
 
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body:Center(child: ElevatedButton(onPressed: (){Navigator.of(context).pushNamed("HomeScreen");tableId="3";}, child: const Text("Press Me"))),
-      
+      appBar: AppBar(
+        title: const Text('QRScanner'),
+      ),
+      body: MobileScanner(
+        onDetect: (barcode, args) {
+          debugPrint("Barcode found!" + barcode.rawValue!);
+        },
+      ),
     );
   }
 }
