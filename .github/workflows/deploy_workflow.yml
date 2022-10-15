@@ -23,5 +23,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: cd ./Protores/restt/
-      - run: ls
+      - run: |
+          cd ./Protores/restt/
+          flutter pub get
+          flutter test
+          flutter build web
+          
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DEPLOY_KEY }} 
+          known_hosts: unnecessary
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -p 22 -H 66.42.42.229  >> ~/.ssh/known_hosts
+        
+      - name: Deploy with rsync
+        run: rsync -avz -e "ssh -p 22" ./Protores/restt/build/web main-user@66.42.42.229:~/web_build
