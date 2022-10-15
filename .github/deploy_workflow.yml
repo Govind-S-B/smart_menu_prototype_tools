@@ -1,0 +1,21 @@
+name: Deployment Workflow
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  API_Updation:
+    name: SSH command
+    runs-on: ubuntu-latest
+    steps:
+    - name: ssh test
+      uses: appleboy/ssh-action@master
+      with:
+        host: 66.42.42.229
+        username: main-user
+        key: ${{ secrets.DEPLOY_KEY}}
+        port: 22
+        script: |
+          cd ~
+          mkdir bleh
+
