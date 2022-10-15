@@ -46,7 +46,7 @@ jobs:
         run: rsync -avz ./Protores/restt/build/web/ main-user@66.42.42.229:./web_build
         
   WebApp_Updation:
-    name: WebApp Server Updating
+    name: WebApp Server Updation
     needs: Build_Web
     runs-on: ubuntu-latest
     steps:
