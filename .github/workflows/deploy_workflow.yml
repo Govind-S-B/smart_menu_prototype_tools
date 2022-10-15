@@ -16,6 +16,5 @@ jobs:
         key: ${{ secrets.DEPLOY_KEY}}
         port: 22
         script: |
-          cd ~
-          mkdir bleho
-
+          screen -S f_api -X stuff "^C\n"
+          screen -S f_api -X stuff "curl -O https://raw.githubusercontent.com/Govind-S-B/smart_menu_prototype_tools/main/Protores/main.py && python3 main.py ^M"
