@@ -2,6 +2,5 @@
 Prototype tooling for smart menu project
 
 Hosting Flask API @aasish_server | Vultr VPS
-njan onede
 
-sup bishes
+NOTE : Dont forget to change the API adress to server IP when pushing to main , please 🙏
