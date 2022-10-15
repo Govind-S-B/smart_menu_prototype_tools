@@ -41,4 +41,4 @@ jobs:
         run: ssh-keyscan -p 22 -H 66.42.42.229  >> ~/.ssh/known_hosts
         
       - name: Deploy with rsync
-        run: rsync -avz ./Protores/restt/build/web/ main-user@66.42.42.229:./web_build
+        run: rsync --version 
