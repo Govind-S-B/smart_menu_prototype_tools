@@ -5,7 +5,7 @@ on:
 
 jobs:
   API_Updation:
-    name: SSH command
+    name: API Updating
     runs-on: ubuntu-latest
     steps:
     - name: ssh test
@@ -18,3 +18,15 @@ jobs:
         script: |
           screen -S f_api -X stuff "^C\n"
           screen -S f_api -X stuff "curl -O https://raw.githubusercontent.com/Govind-S-B/smart_menu_prototype_tools/main/Protores/main.py && python3 main.py ^M"
+  Build_Web:
+    name: Flutter Web Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build web
+      - run: ls
