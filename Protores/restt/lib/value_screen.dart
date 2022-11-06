@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:restt/HomeScreen.dart';
-
-String tableId = "";
+import 'dart:convert';
+import 'package:restt/home_screen.dart';
 
 void main() {
   runApp(const ScreenValue());
@@ -38,18 +35,18 @@ class _MyHomePageState extends State<MyHomePage> {
       body: MobileScanner(
         onDetect: (barcode, args) {
           
-          debugPrint("Barcode Found!" + barcode.rawValue!);
+          debugPrint("Barcode Found!${barcode.rawValue!}");
           
           try{
-            Map decoded_qr = json.decode(barcode.rawValue!);
+            Map decodedQr = json.decode(barcode.rawValue!);
           
-            debugPrint(decoded_qr["table_id"].toString());
+            debugPrint(decodedQr["table_id"].toString());
             
-            if (decoded_qr.containsKey("table_id")){
-              debugPrint(decoded_qr["table_id"].toString());
+            if (decodedQr.containsKey("table_id")){
+              debugPrint(decodedQr["table_id"].toString());
               Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ScreenHome()));
+              MaterialPageRoute(builder: (context) => const ScreenHome()));
           }
           else{
             ScaffoldMessenger.of(context).showSnackBar(
@@ -57,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 content: Container(
                 height: 90,
                 decoration: BoxDecoration(color: Colors.red.shade600),
-                child: Text("Wrong QR , try again"),
+                child: const Text("Wrong QR , try again"),
               ),
               behavior: SnackBarBehavior.floating,
               )
@@ -70,13 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 content: Container(
                 height: 90,
                 decoration: BoxDecoration(color: Colors.red.shade600),
-                child: Text("Wrong QR , try again"),
+                child: const Text("Wrong QR , try again"),
               ),
               behavior: SnackBarBehavior.floating,
               )
             );
           }
-          
         }
       ),
     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:restt/ValueScreen.dart';
 import 'package:restt/functions.dart';
+
 class ScreenHome extends StatefulWidget   {
-  ScreenHome({Key? key}) : super(key: key);
+  const ScreenHome({Key? key}) : super(key: key);
 
   @override
   State<ScreenHome> createState() => _ScreenHomeState();
@@ -21,13 +21,16 @@ class _ScreenHomeState extends State<ScreenHome> {
         children: [
           TextFormField(
             onChanged: (value) {
-              url = "http://66.42.42.229:5000//RestApi?query="+value.toString()+"&id="+tableId;
+              url = "http://localhost:5000//RestApi?query=$value";
             },
             decoration: const InputDecoration(
             icon: Icon(Icons.password),
             labelText: "Enter pin",
           ),),
-          ElevatedButton(onPressed: () async{redirect= await getResult(url);screenNav(redirect, context);
+          ElevatedButton(onPressed: () async{
+            redirect= await getResult(url);
+            if (!mounted) return;
+            screenNav(redirect, context);
           }, child: const Text("Verify") ),
           // chance of error
         ], 
