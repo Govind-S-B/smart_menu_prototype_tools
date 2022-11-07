@@ -47,10 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
             
             if (decodedQr.containsKey("table_id")){
               debugPrint(decodedQr["table_id"].toString());
-              Navigator.pushReplacement(
+              Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => const ScreenHome()),
-              );
+              (route) => false);
               cameraController.stop();
           }
           else{
