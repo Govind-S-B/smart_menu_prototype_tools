@@ -3,6 +3,8 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import 'dart:convert';
 import 'package:restt/home_screen.dart';
 
+MobileScannerController cameraController = MobileScannerController();
+
 void main() {
   runApp(const ScreenValue());
 }
@@ -33,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('QRScanner'),
       ),
       body: MobileScanner(
+        controller: cameraController,
         onDetect: (barcode, args) {
           
           debugPrint("Barcode Found!${barcode.rawValue!}");
@@ -44,9 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
             
             if (decodedQr.containsKey("table_id")){
               debugPrint(decodedQr["table_id"].toString());
-              Navigator.push(
+              Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const ScreenHome()));
+              MaterialPageRoute(builder: (context) => const ScreenHome()),
+              );
+              cameraController.stop();
           }
           else{
             ScaffoldMessenger.of(context).showSnackBar(
